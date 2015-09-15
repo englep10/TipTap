@@ -1,1 +1,16 @@
-<h1>Edit Post</h1>
+<h3>Edit Post</h3>
+
+<div class="container">
+	<div class="row title">
+		<div class="col-md-6 col-md-offset-3">
+
+			<form ng-submit="updateTask(selectedTask)">
+		      <input type="text" ng-model="selectedTask.title" class="form-control" placeholder="selectedTask.title" required><br>
+		      <textarea ng-model="selectedTask.description" class="form-control" placeholder="selectedTask.description" required></textarea><br>
+		      <input type="number" ng-model="selectedTask.total" class="form-control" placeholder="selectedTask.total" required><br>
+		      <input type="submit" value="Update Task" class="btn btn-warning">
+		    </form>
+
+		</div>
+	</div>
+</div>
