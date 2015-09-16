@@ -74,9 +74,10 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 
 		Offer.makeOffer($scope.selectedTask.$id, offer).then(function(){
 			toaster.pop('success', "You offer has been placed.");
+			$scope.alreadyOffered = true;
 			$scope.total = '';
 			$scope.block = true;
-			$scope.alreadyOffered = true;
+
 		});
 	}
 
