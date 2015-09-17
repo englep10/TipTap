@@ -24,12 +24,16 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 		if($scope.signedIn()) {
 
 
-			Offer.isOffered(task.$id).then(function(data){
+			Offer.isOffered(task.$id).then(function(data) {
 				$scope.alreadyOffered = data;
 			});
 
 			// Check if the current login user is the creator of selected task
 			$scope.isTaskCreator = Task.isCreator;
+
+			$scope.isAssignee = Task.isAssignee;
+
+			$scope.isCompleted = Task.isCompleted;
 
 			// Check if the selectedTask is open
 			$scope.isOpen = Task.isOpen;
@@ -100,5 +104,10 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 		});
 	};
 
+	$scope.completeTask = function(taskId) {
+		Task.completeTask(taskId).then(function() {
+			toaster.pop('success', 'Congratulations! you have completed a task.');
+		});
+	};
 
 });
