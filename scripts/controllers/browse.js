@@ -40,6 +40,8 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 
 		$scope.offers = Offer.offers(task.$id);
 
+		$scope.isOfferMaker = Offer.isMaker;
+
 	};
 
 	// --------------- TASK ---------------
@@ -79,6 +81,24 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Task,
 			$scope.block = true;
 
 		});
-	}
+
+	};
+
+	$scope.cancelOffer = function(offerId) {
+		console.log("clicked");
+		Offer.cancelOffer($scope.selectedTask.$id, offerId).then(function() {
+			toaster.pop('success', "Your offer has been cancelled.");
+
+			$scope.alreadyOffered = false;
+			$scope.block = false;
+		});
+	};
+
+	$scope.acceptOffer = function(offerId, runnerId) {
+		Offer.acceptOffer($scope.selectedTask.$id, offerId, runnerId).then(function() {
+			toaster.pop('success', 'Offer is accepted.');
+		});
+	};
+
 
 });
