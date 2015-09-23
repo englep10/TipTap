@@ -38,7 +38,8 @@ app.factory('Task', function(FURL, $firebase, Auth) {
 					var obj = {
 						taskId: taskId,
 						type: false,
-						title: task.title
+						title: task.title,
+						category: task.category
 					};
 
 					return $firebase(ref.child('user_tasks').child(task.runner)).$push(obj);
@@ -47,7 +48,7 @@ app.factory('Task', function(FURL, $firebase, Auth) {
 
 		editTask: function(task) {
 			var t = this.getTask(task.$id);
-			return t.$update({title: task.title, description: task.description, total: task.total});
+			return t.$update({title: task.title, description: task.description, total: task.total, category: task.category, image_url: task.image_url});
 		},
 
 		cancelTask: function(taskId) {

@@ -3,6 +3,7 @@
 app.controller('BrowseController', function($scope, $routeParams, toaster, Task, Auth, Comment, Offer) {
 
 	$scope.searchTask = '';
+	$scope.searchCategory = '';
 	$scope.tasks = Task.all;
 
 	$scope.user = Auth.user;

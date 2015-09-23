@@ -1,7 +1,7 @@
 <div class="row">
 
 	<!-- LEFT PANEL -->
-	<div class="col-md-4">
+	<div class="col-md-5">
 
 		<div class="list-group">
 				<!-- SEARCH TOOL -->
@@ -11,11 +11,19 @@
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</div>
 			      <input type="text" ng-model="searchTask" class="form-control" placeholder="Search">
-			    </div>
+					</div>
+						<div>
+						<center>
+							<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#offModal">All</button>
+							<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#offModal">Apparel</button>
+							<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#offModal">Assistance</button>
+							<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#offModal">Text-Books</button>
+						</center>
+						</div>
 				</div>
 
 				<!-- TASK LIST -->
-				<a ng-repeat="task in tasks | filter: {title: searchTask , status: '!cancelled'} | orderBy: 'datetime':true" ng-href="#/browse/{{task.$id}}">
+				<a ng-repeat="task in tasks | filter: {title: searchTask , category: searchCategory , status: '!cancelled'} | orderBy: 'datetime':true" ng-href="#/browse/{{task.$id}}">
 					<div class="list-group-item">
 				        <div class="row-picture">
 				            <img class="circle" ng-src="{{task.gravatar}}">
@@ -38,7 +46,7 @@
 	</div>
 
 	<!-- RIGHT PANEL -->
-	<div class="col-md-8">
+	<div class="col-md-7">
 		<div ng-show="listMode">
 			<img src="images/browse.jpg" class="img-responsive img-browse">
 		</div>
