@@ -7,7 +7,8 @@ var app = angular
     'ngRoute',
     'firebase',
     'toaster',
-    'angularMoment'
+    'angularMoment',
+    'angular-filepicker'
   ])
   .constant('FURL', 'https://tiptap.firebaseio.com/')
   .run(function($rootScope, $location) {
@@ -17,7 +18,10 @@ var app = angular
       }
     });
   })
-  .config(function ($routeProvider) {
+
+  .config(function ($routeProvider, filepickerProvider) {
+    filepickerProvider.setKey('AiJepKVnnS26nusA9yOpaz');
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/browse.html',
